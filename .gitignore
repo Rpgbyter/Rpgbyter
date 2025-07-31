@@ -1,3 +1,8 @@
+# Ignore private and local folders/files
+Pri/
+Posts/
+*.py
+*.md
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
