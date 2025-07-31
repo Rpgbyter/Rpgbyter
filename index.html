@@ -121,7 +121,7 @@
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
         .card {
             background: var(--card-bg);
@@ -146,6 +146,22 @@
         .card-footer {
             font-size: 0.9em;
             color: #aaa;
+        }
+        .read-more-btn {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            text-decoration: none;
+            font-size: 0.8em;
+            border: 2px solid var(--accent-color);
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 10px;
+        }
+        .read-more-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border-color: var(--accent-color);
         }
         .about-me-section {
             text-align: center;
@@ -218,28 +234,37 @@
                     </p>
                 </div>
                 <div class="card-grid">
+                    <div class="card">
+                        <img src="./CLITrae/gemini_cli_image_7.png" alt="Gemini CLI Tutorial" style="width:100%; height:auto; margin-bottom: 15px;">
+                        <h3>Gemini CLI Tutorial: Your AI Terminal Companion</h3>
+                        <button class="read-more-button" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content">
+                            <p>A comprehensive guide to installing, setting up, and mastering the Gemini CLI for enhanced terminal productivity.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="./PollinationsTutorial/gemini_cli_image_5.png" alt="Pollinations.ai Tutorial" style="width:100%; height:auto; margin-bottom: 15px;">
+                        <h3>Generating Images with Pollinations.ai: A Step-by-Step Guide</h3>
+                        <button class="read-more-button" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content">
+                            <p>Learn how to programmatically generate and download images using the Pollinations.ai public API with Python.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>The Power of Gemini CLI: Your Ultimate AI Terminal Companion</h3>
+                        <img src="./CLITrae/gemini_cli_image_1.png" alt="Gemini CLI" style="width:100%; height:auto; margin-bottom:15px;">
+                        <button class="read-more-button" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content">
+                            <p>Discover how Google's Gemini CLI revolutionizes your development workflow by bringing powerful AI capabilities directly to your terminal. This comprehensive tutorial covers installation, usage, and advanced features to supercharge your coding, debugging, and task automation.</p>
+                            <div class="card-footer">Published: 2024-07-25</div>
+                        </div>
+                    </div>
                     <!-- First blog post, collapsible -->
                     <div class="card blog-post">
                       <h3>So, Are You Over 18? Prove It. Again. And Again.</h3>
                       <div class="card-footer">2024-07-30</div>
                       <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
                       <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
-</div>
-<!-- ...existing code... -->
-<script>
-function togglePostContent(btn) {
-  const content = btn.nextElementSibling;
-  if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-    content.style.maxHeight = '0px';
-    content.style.padding = '';
-    btn.textContent = 'Read More';
-  } else {
-    content.style.maxHeight = content.scrollHeight + 40 + 'px';
-    content.style.padding = '16px 0';
-    btn.textContent = 'Read Less';
-  }
-}
-</script>
                         <h4>Introduction</h4>
                         <p>A satirical look at the UK's age verification law and its impact on adults and the tech scene.</p>
                         <h4>The Law and Its Execution</h4>
@@ -255,30 +280,53 @@ function togglePostContent(btn) {
                         <p>So, here's to the age verification law. A solution that doesn't solve the problem, but creates a whole host of new ones. I'd raise a glass to it, but I'm not sure I can be bothered to prove I'm old enough to buy one.</p>
                         <p><em>RpgByter</em></p>
                       </div>
+
                     </div>
                     <!-- Example posts -->
                     <div class="card">
-                        <h3>AI Ethics in 2024</h3>
-                        <div class="card-footer">Last updated: 05/15/2024</div>
+                        <h3>AI Ethics in 2024: A Dumpster Fire of Good Intentions</h3>
                         <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
                         <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
-                            <p>Exploring the moral dilemmas of generative AI and where we should draw the line.</p>
+                            <img src="../df61bcbc-719b-4325-9e90-a3b207f58686.png" alt="AI Ethics Image" style="width:100%; height:auto; margin-bottom: 15px;">
+                            <p>Welcome to 2024, where the AI ethics conversation has officially reached the "thoughts and prayers" stage. We've moved on from the quaint, academic debates about trolley problems and paperclip maximizers, and into the messy, real-world consequences of unleashing powerful, inscrutable algorithms on an unsuspecting public.</p>
+                            <p>And what a mess it is.</p>
+                            <p>We have AI models that can generate photorealistic images of anything you can imagine, but can't seem to shake the racist and sexist biases of the data they were trained on. We have AI-powered hiring tools that can analyze a candidate's facial expressions, but can't tell the difference between a thoughtful pause and a blank stare. We have AI-generated news articles that are indistinguishable from the real thing, but are completely untethered from reality.</p>
+                            <p>And what is the response from the tech giants who have unleashed these digital demons? A flurry of vague, non-committal "AI ethics principles" that are about as meaningful as a chocolate teapot. They talk about "fairness" and "transparency" and "accountability," but they can't even agree on what those words mean, let alone how to implement them.</p>
+                            <p>The EU is trying, bless its heart, with the AI Act. But it's like trying to build a dam with a teaspoon while a tsunami is on the horizon. The technology is moving too fast, the incentives are too skewed, and the potential for misuse is too great.</p>
+                            <p>And let's not even get started on the grifters and the charlatans who are using the AI hype to peddle their snake oil to a gullible public. The "AI-powered" everything, from toasters to toothbrushes, that are about as intelligent as a brick. The self-proclaimed "AI ethicists" who are more interested in building their personal brand than in having a meaningful conversation about the future of humanity.</p>
+                            <p>I'm tired. I'm tired of the empty promises, the disingenuous apologies, and the wilful ignorance of the people who are building this technology. I'm tired of being told that we need to "move fast and break things," when the things that are being broken are our privacy, our democracy, and our shared sense of reality.</p>
+                            <p>We need to do better. We need to demand more from the people who are building this technology. We need to have a serious, grown-up conversation about the kind of future we want to live in. And we need to do it now, before it's too late.</p>
                         </div>
                     </div>
                     <div class="card">
-                        <h3>The Great Framework War</h3>
-                        <div class="card-footer">Last updated: 04/28/2024</div>
+                        <h3>The Great Framework War is Over. We All Lost.</h3>
                         <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
                         <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
-                            <p>React vs Vue vs Svelte - does it really matter which you choose?</p>
+                            <img src="../422ccb1d-a762-493f-b8b5-53a9bd42038f.png" alt="Framework War Image" style="width:100%; height:auto; margin-bottom: 15px;">
+                            <p>Another day, another JavaScript framework. Or is it a library? A meta-framework? A micro-library that only works on Tuesdays when the moon is in retrograde? It's hard to keep track. And frankly, I'm tired.</p>
+                            <p>The Great Framework War, that endless, pointless, and frankly embarrassing conflict that has dominated web development for the better part of a decade, is over. Not because there was a winner, but because the battlefield is so littered with the corpses of abandoned projects and burnt-out developers that there's no one left to fight.</p>
+                            <p>We were promised that these frameworks would save us. That they would make our lives easier, our code cleaner, and our applications faster. And for a while, maybe they did. But then the venture capitalists caught on, and suddenly every framework needed to be a unicorn. Every library needed to be a platform. Every simple solution to a simple problem needed to be a sprawling, complex ecosystem with its own CLI, its own state management, and its own cult-like following.</p>
+                            <p>We've spent so much time arguing about the merits of React vs. Angular vs. Vue vs. Svelte vs. whatever the flavour of the week is, that we've forgotten what we were trying to do in the first place: build things for people to use.</p>
+                            <p>And the cost of this war? It's not just the time we've wasted in endless debates on Twitter and Hacker News. It's the mental health of the developers who have been forced to constantly learn and relearn new tools, just to stay relevant. It's the careers of those who bet on the wrong horse and found themselves unemployable overnight. It's the countless hours we've spent trying to debug a problem that has nothing to do with our application, and everything to do with the framework's latest breaking change.</p>
+                            <p>We need to stop. We need to declare a ceasefire. We need to admit that there is no one true framework to rule them all. We need to start choosing the right tool for the job, not the one that's currently trending on GitHub. We need to start valuing simplicity and stability over novelty and hype.</p>
+                            <p>The war is over. Let's go home.</p>
                         </div>
                     </div>
                     <div class="card">
-                        <h3>Tech Layoffs & Mental Health</h3>
-                        <div class="card-footer">Last updated: 03/10/2024</div>
+                        <h3>Tech Layoffs & Mental Health: The Hangover After the Gold Rush</h3>
                         <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
                         <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
-                            <p>A personal perspective on navigating uncertainty in the tech industry.</p>
+                            <img src="../d39eb082-5357-4def-80cb-7bbddbc87281.png" alt="Tech Layoffs Image" style="width:100%; height:auto; margin-bottom: 15px;">
+                            <p>The party's over. The keg is empty, the music has stopped, and the harsh light of morning is revealing the wreckage of the tech industry's decade-long bender.</p>
+                            <p>The layoffs, when they came, were swift and brutal. One day you were a "rockstar developer" with a six-figure salary and a kombucha tap in the office, and the next you were a statistic in a spreadsheet, your access to the company Slack unceremoniously revoked.</p>
+                            <p>And the whiplash has been brutal.</p>
+                            <p>For years, we were told that we were the chosen ones. That we were building the future, and that our work was changing the world. We were plied with free food, unlimited vacation, and a sense of purpose that was as intoxicating as it was illusory. We weren't just employees; we were family.</p>
+                            <p>And then, in the blink of an eye, the family turned on us. The all-hands meetings that used to be about celebrating our wins were now about "restructuring" and "synergies" and "right-sizing." The free lunches were replaced with a cold, corporate email informing us that our services were no longer required.</p>
+                            <p>The impact on our mental health has been devastating. The anxiety, the depression, the sense of betrayal – it's a toxic cocktail that has left many of us feeling lost and alone. We're grieving not just the loss of a job, but the loss of an identity. The loss of a future we thought we were building.</p>
+                            <p>And the worst part? The gaslighting. The endless stream of articles and LinkedIn posts from the very same people who caused this mess, telling us to be "resilient" and to "embrace change" and to "see this as an opportunity." The tone-deaf advice from the out-of-touch executives who are still sitting on their piles of cash, telling us to just "learn to code" in a different language.</p>
+                            <p>I'm tired. I'm tired of the platitudes, the hypocrisy, and the complete lack of empathy from the people who are supposed to be our leaders. I'm tired of pretending that this is normal, or that it's just the cost of doing business.</p>
+                            <p>We need to talk about this. We need to be honest about the toll that this industry has taken on our mental health. We need to support each other, and we need to demand better from the companies that we work for.</p>
+                            <p>The gold rush is over. It's time to start cleaning up the mess.</p>
                         </div>
                     </div>
                 </div>
@@ -386,7 +434,7 @@ function togglePostContent(btn) {
                         My journey through the tech industry and lessons learned
                     </p>
                 </div>
-                <img src="./Copi/rpgbyter_logo_7.png" alt="Rpgbyter Logo">
+                                                                <img src="./rpgbyter_logo_7.png" alt="Rpgbyter Logo">
                 <div class="card-grid">
                     <div class="card">
                         <h3>From Zero to Developer</h3>
@@ -406,7 +454,26 @@ function togglePostContent(btn) {
                         <h3>Why Open Source?</h3>
                         <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
                         <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
-                            <p>The philosophy behind sharing knowledge and code freely.</p>
+                            <img src="../0109ae33-4327-4bf0-85cd-4bbd6448a442.png" alt="Open Source Image" style="width:100%; height:auto; margin-bottom: 15px;">
+                            <p><strong>The digital world as we know it is a sprawling, intricate metropolis. And like any great city, it has an invisible infrastructure, a foundational layer that everything else is built upon. That infrastructure, more often than not, is open-source software.</strong></p>
+                            <p>We live in an age of unprecedented technological advancement, yet we rarely stop to consider the bedrock of this revolution. It’s not the glossy, consumer-facing products that are the true marvels, but the silent, collaborative efforts of millions of developers who have built the tools, libraries, and platforms that power our daily lives. This isn’t just a niche corner of the tech world; it’s the very heart of it.</p>
+                            <h4>The Nickel-and-Dime Economy vs. The Collaborative Commonwealth</h4>
+                            <p>In the proprietary software model, the world is a series of walled gardens. You pay an entrance fee, and you’re granted access to a curated experience. But you’re also locked in. The walls are high, the tools are proprietary, and the knowledge is siloed. This is the nickel-and-dime economy, where every feature, every update, and every integration comes with a price tag. It’s a model built on scarcity and control.</p>
+                            <p>Open source, on the other hand, is a collaborative commonwealth. It’s a bustling, chaotic, and beautiful bazaar of ideas, where the currency is contribution, not cash. The source code, the very blueprint of the software, is freely available for anyone to inspect, modify, and improve. This transparency fosters a level of trust and security that proprietary software can only dream of.</p>
+                            <h4>The Data Doesn't Lie: Open Source is Dominating</h4>
+                            <p>This isn’t just a philosophical debate; the numbers paint a clear picture. As of 2024, the demand-side value of open-source software is estimated at a staggering <strong>$8.8 trillion</strong>. That’s the astronomical cost businesses would face if they had to build the open-source tools they use from scratch. The open-source market itself is projected to hit <strong>$41.83 billion in 2024</strong>, a testament to its explosive growth.</p>
+                            <p>Consider these key areas:</p>
+                            <ul>
+                                <li><strong>The Cloud:</strong> The very fabric of the modern internet is woven with open-source threads. A staggering <strong>95% of organizations</strong> have increased or maintained their use of open source in the past year. The cloud-native landscape, the future of scalable and resilient applications, is overwhelmingly open source, with technologies like <strong>Kubernetes</strong> (originally from Google) being the de facto standard for container orchestration.</li>
+                                <li><strong>The Web:</strong> When you browse the internet, you’re interacting with a symphony of open-source technologies. From the <strong>Linux</strong> operating system running the servers, to the <strong>Apache</strong> or <strong>Nginx</strong> web servers that deliver the content, to the <strong>MySQL</strong> or <strong>PostgreSQL</strong> databases that store the information, open source is the invisible hand that guides your digital journey.</li>
+                                <li><strong>Artificial Intelligence:</strong> The AI revolution is being built on an open-source foundation. <strong>Python</strong>, the language of choice for AI and machine learning, is open source. The most popular AI frameworks, like <strong>TensorFlow</strong> (from Google) and <strong>PyTorch</strong> (from Meta), are open source. This open approach has accelerated the pace of innovation in AI at an unprecedented rate.</li>
+                            </ul>
+                            <h4>The Giants Who Stand on the Shoulders of Giants</h4>
+                            <p>The irony of the modern tech landscape is that the very companies that once championed the proprietary model are now some of the biggest contributors to open source. <strong>Microsoft</strong>, once a fierce opponent of open source, is now the largest contributor to open-source projects globally. <strong>Google</strong>, the architect of our digital lives, has built its empire on the back of open-source technologies like Linux and has given back to the community with projects like Android and Kubernetes. <strong>Meta</strong> (Facebook) has open-sourced critical technologies like React and PyTorch, which have become industry standards.</p>
+                            <p>These tech giants understand a fundamental truth: <strong>innovation thrives in the open.</strong> By contributing to the open-source ecosystem, they not only benefit from the collective intelligence of the global developer community but also shape the future of technology in a way that benefits everyone.</p>
+                            <h4>Beyond the Code: A Philosophy of Collaboration</h4>
+                            <p>Open source is more than just a development model; it’s a philosophy. It’s a belief in the power of collaboration, transparency, and community. It’s a rejection of the idea that knowledge should be hoarded and monetized. It’s a testament to the fact that when we share our ideas and work together, we can build things that are far greater than what any single individual or corporation could create on their own.</p>
+                            <p>So the next time you check your email, stream a movie, or even just browse the web, take a moment to appreciate the unseen empire of open source that makes it all possible. It’s a world built not on transactions, but on trust. And in an age of increasing digital fragmentation and distrust, that’s a foundation worth celebrating and defending.</p>
                         </div>
                     </div>
                 </div>
@@ -416,5 +483,18 @@ function togglePostContent(btn) {
             <p>&copy; 2025 Rpgbyter. All rights reserved. Powered by Bytes and Pixels.</p>
         </footer>
     </div>
+<script>
+function togglePostContent(btn) {
+  const content = btn.nextElementSibling;
+  if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+    content.style.maxHeight = '0px';
+    content.style.padding = '';
+    btn.textContent = 'Read More';  } else {
+    content.style.maxHeight = content.scrollHeight + 32 + 'px'; // 16px top + 16px bottom padding
+    content.style.padding = '16px 0';
+    btn.textContent = 'Read Less';
+  }
+}
+</script>
 </body>
 </html>
