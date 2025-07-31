@@ -1,0 +1,1422 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastel Codepen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --pastel-mint: #b5ead7;
+            --pastel-lavender: #e2d0f3;
+            --pastel-peach: #ffdac1;
+            --pastel-blue: #c7ceea;
+            --pastel-yellow: #fff2cc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-lavender));
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-card {
+            background-color: var(--pastel-peach);
+        }
+        
+        .tutorial-card {
+            background-color: var(--pastel-blue);
+        }
+        
+        .code-card {
+            background-color: var(--pastel-mint);
+        }
+        
+        .journal-card {
+            background-color: var(--pastel-yellow);
+        }
+        
+        .active-tab {
+            border-bottom: 3px solid var(--pastel-lavender);
+        }
+        
+        .code-block {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                width: 100% !important;
+                text-align: center;
+            }
+            
+            .hero-image {
+                width: 100% !important;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg py-4 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40" alt="Pastel Codepen Logo - abstract pastel colored geometric shapes forming a cube" class="rounded-full" />
+                <span class="text-xl font-bold text-gray-800">Pastel Codepen</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#blog" class="text-gray-700 hover:text-gray-900 transition">Blog</a>
+                <a href="#tutorials" class="text-gray-700 hover:text-gray-900 transition">Tutorials</a>
+                <a href="#code" class="text-gray-700 hover:text-gray-900 transition">Code</a>
+                <a href="#about" class="text-gray-700 hover:text-gray-900 transition">About</a>
+            </div>
+            <button class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-6 gradient-bg">
+        <div class="max-w-6xl mx-auto hero-content flex flex-wrap">
+            <div class="hero-text w-1/2 mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Code, Create, Chronicle</h1>
+                <p class="text-lg text-gray-700 mb-6">A pastel-hued space for coding tutorials, technical blogging, and sharing snippets with the world.</p>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-gray-800 px-6 py-2 rounded-full shadow hover:shadow-md transition">Get Started</button>
+                    <button class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-gray-800 transition">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image w-1/2">
+                <img src="https://placehold.co/600x400" alt="Digital workspace illustration showing a laptop with code editor, notebook with pastel markers, and a cup of coffee on a wooden desk with soft lighting" class="rounded-lg shadow-xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <main class="max-w-6xl mx-auto py-12 px-6">
+        <!-- Tabs Navigation -->
+        <div class="flex border-b mb-8 overflow-x-auto">
+            <button id="blog-tab" class="px-4 py-2 mr-2 font-medium text-gray-700 active-tab">Blog/Journal</button>
+            <button id="tutorials-tab" class="px-4 py-2 mr-2 font-medium text-gray-700">Tutorials</button>
+            <button id="code-tab" class="px-4 py-2 font-medium text-gray-700">Code Drops</button>
+        </div>
+
+        <!-- Blog Section -->
+        <section id="blog-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Blog Card 1 -->
+            <div class="card blog-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/40x40" alt="Author avatar - cartoon illustration of a person with glasses and curly hair" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Sarah K.</h3>
+                        <p class="text-sm text-gray-600">2 days ago</p>
+                    </div>
+                </div>
+                <img src="https://placehold.co/600x400" alt="Abstract pastel colored digital art representing coding concepts" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold mb-2">My Journey Learning React</h2>
+                <p class="text-gray-700 mb-4">How I went from beginner to building complex applications in just 3 months...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#react</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+
+            <!-- Journal Card -->
+            <div class="card journal-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/40x40" alt="Author avatar - illustration of a person with glasses in a purple sweater" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Alex W.</h3>
+                        <p class="text-sm text-gray-600">1 week ago</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold mb-2">Imposter Syndrome in Tech</h2>
+                <p class="text-gray-700 mb-4">Dealing with feelings of inadequacy while transitioning careers into software development...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#career</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="card blog-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/40x40" alt="Author avatar - digital painting of a person smiling with blue hair" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Jamie L.</h3>
+                        <p class="text-sm text-gray-600">3 weeks ago</p>
+                    </div>
+                </div>
+                <img src="https://placehold.co/600x300" alt="Workspace setup with dual monitors showing code and pastel colored sticky notes on the wall" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold mb-2">Optimizing Your Dev Setup</h2>
+                <p class="text-gray-700 mb-4">Essential tools and configurations for maximum productivity...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#productivity</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorials Section (Hidden by default) -->
+        <section id="tutorials-section" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tutorial Card 1 -->
+            <div class="card tutorial-card rounded-lg p-6">
+                <div class="flex items-start mb-4">
+                    <div class="bg-white p-2 rounded-lg mr-4">
+                        <img src="https://placehold.co/60x60" alt="JavaScript logo with pastel colors" />
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">JavaScript Array Methods</h2>
+                        <p class="text-gray-700">Master map, filter, and reduce with practical examples</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 bg-white rounded-full mr-2">#beginner</span>
+                    <span class="text-sm px-2 py-1 bg-white rounded-full">#javascript</span>
+                </div>
+                <a href="#" class="inline-block px-4 py-2 bg-white rounded-full text-gray-800 hover:shadow transition">Start Tutorial</a>
+            </div>
+
+            <!-- Tutorial Card 2 -->
+            <div class="card tutorial-card rounded-lg p-6">
+                <div class="flex items-start mb-4">
+                    <div class="bg-white p-2 rounded-lg mr-4">
+                        <img src="https://placehold.co/60x60" alt="CSS logo with soft pink and blue gradient" />
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">CSS Grid Layout</h2>
+                        <p class="text-gray-700">Create responsive layouts without media queries</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 bg-white rounded-full mr-2">#intermediate</span>
+                    <span class="text-sm px-2 py-1 bg-white rounded-full">#css</span>
+                </div>
+                <a href="#" class="inline-block px-4 py-2 bg-white rounded-full text-gray-800 hover:shadow transition">Start Tutorial</a>
+            </div>
+        </section>
+
+        <!-- Code Drops Section (Hidden by default) -->
+        <section id="code-section" class="hidden">
+            <div class="card code-card rounded-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Quick Sort Algorithm</h2>
+                    <div class="flex">
+                        <button class="mr-2 text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                                <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-block mb-4">
+                    <pre><code class="language-javascript">function quickSort(arr) {
+    if (arr.length <= 1) return arr;
+    
+    const pivot = arr[0];
+    const left = [];
+    const right = [];
+    
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+    }
+    
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));</code></pre>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/30x30" alt="Author avatar - simple line drawing of a face" class="rounded-full mr-2" />
+                    <span class="text-sm font-medium">Shared by @devuser</span>
+                </div>
+            </div>
+
+            <div class="card code-card rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Debounce Function</h2>
+                    <div class="flex">
+                        <button class="mr-2 text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                                <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-block mb-4">
+                    <pre><code class="language-javascript">function debounce(func, delay) {
+    let timeoutId;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+// Usage:
+window.addEventListener('resize', debounce(() => {
+    console.log('Window resized');
+}, 300));</code></pre>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/30x30" alt="Author avatar - abstract colored circle with initials" class="rounded-full mr-2" />
+                    <span class="text-sm font-medium">Shared by @codehelper</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="bg-white py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <img src="https://placehold.co/200x200" alt="Profile picture - illustration of a smiling developer at their desk with pastel colored background" class="rounded-full mx-auto mb-6 w-32 h-32 object-cover" />
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
+            <p class="text-lg text-gray-600 mb-6">I'm a developer and educator who loves sharing knowledge through tutorials, blogging about my coding journey, and creating helpful code snippets for the community.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg py-8 px-6 text-center">
+        <p class="text-gray-700 mb-4">© 2023 Pastel Codepen. All rights reserved.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="text-gray-700 hover:text-gray-900">Privacy Policy</a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">Terms of Service</a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = {
+                'blog-tab': 'blog-section',
+                'tutorials-tab': 'tutorials-section',
+                'code-tab': 'code-section'
+            };
+            
+            // Set initial active tab
+            let activeTab = 'blog-tab';
+            
+            // Function to switch between tabs
+            function switchTab(tabId) {
+                // Remove active class from all tabs
+                document.querySelectorAll('[id$="-tab"]').forEach(tab => {
+                    tab.classList.remove('active-tab');
+                });
+                
+                // Hide all sections
+                Object.values(tabs).forEach(sectionId => {
+                    document.getElementById(sectionId).classList.add('hidden');
+                });
+                
+                // Add active class to selected tab and show its section
+                document.getElementById(tabId).classList.add('active-tab');
+                document.getElementById(tabs[tabId]).classList.remove('hidden');
+                
+                // Update active tab
+                activeTab = tabId;
+            }
+            
+            // Add click event listeners to tabs
+            Object.keys(tabs).forEach(tabId => {
+                document.getElementById(tabId).addEventListener('click', () => {
+                    switchTab(tabId);
+                });
+            });
+            
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'hidden absolute top-16 left-0 right-0 bg-white shadow-md py-4 px-6 gradient-bg z-10';
+            mobileMenu.innerHTML = `
+                <a href="#blog" class="block py-2 text-gray-700 hover:text-gray-900">Blog</a>
+                <a href="#tutorials" class="block py-2 text-gray-700 hover:text-gray-900">Tutorials</a>
+                <a href="#code" class="block py-2 text-gray-700 hover:text-gray-900">Code</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-gray-900">About</a>
+            `;
+            document.body.appendChild(mobileMenu);
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+            
+            // Syntax highlighting function
+            function highlightCodeBlocks() {
+                const codeBlocks = document.querySelectorAll('pre code');
+                codeBlocks.forEach(block => {
+                    const text = block.textContent;
+                    // Simple syntax highlighting (would be better with a library)
+                    const highlighted = text
+                        .replace(/(\/\/.*|\/\*[\s\S]*?\*\/)/g, '<span class="text-gray-500">$1</span>') // Comments
+                        .replace(/(function|return|const|let|var|if|else|for|while|do|switch|case|break|default)\b/g, '<span class="text-blue-600">$1</span>') // Keywords
+                        .replace(/(".*?"|'.*?')/g, '<span class="text-green-600">$1</span>') // Strings
+                        .replace(/([0-9]+)/g, '<span class="text-purple-600">$1</span>'); // Numbers
+                    
+                    block.innerHTML = highlighted;
+                });
+            }
+            
+            // Run syntax highlighting
+            highlightCodeBlocks();
+        });
+    </script>
+</body>
+</html>
+```
+
+This single-file HTML website includes:
+
+1. A modern pastel color scheme with gradients and soft hues
+2. Responsive design that works on mobile and desktop
+3. Three main sections:
+   - Blog/Journal for personal reflections
+   - Tutorials for coding guides
+   - Code Drops for sharing snippets
+
+4. Features:
+   - Tab system to switch between content types
+   - Mobile-friendly navigation
+   - Syntax highlighting for code blocks
+   - Author cards with publication dates
+   - Interactive elements with hover effects
+   - Clean, spacious layout
+
+5. Visual Elements:
+   - Custom logo placeholder
+   - Featured images for blog posts
+   - Illustrated hero section
+   - Subtle animations on cards
+
+The design is minimalist yet colorful, perfect for GitHub Pages hosting. All functionality (tabs, mobile menu) is implemented with vanilla JavaScript for simplicity.
+### YOU
+i love it - go ahead and generatie RPGBytes logos and images and fill all the place holerder images with beatulfy images around Rpgbyter as a name
+### BLACKBOX.AI
+
+🔄 **HTML Edit Mode** - Processing your edit request...
+
+ Here are the key image/logo/text updates:
+
+1. Update site title and branding:
+
+```diff
+<<<<<<< SEARCH
+    <title>Pastel Codepen</title>
+=======
+    <title>RPGBytes | Code Chronicles</title>
+>>>>>>> REPLACE
+```
+
+
+```diff
+<<<<<<< SEARCH
+                <img src="https://placehold.co/40x40" alt="Pastel Codepen Logo - abstract pastel colored geometric shapes forming a cube" class="rounded-full" />
+                <span class="text-xl font-bold text-gray-800">Pastel Codepen</span>
+=======
+                <img src="https://placehold.co/40x40?text=RPGBytes" alt="RPGBytes Logo - pixel art RPG sword and keyboard icon in pastel colors" class="rounded-full" />
+                <span class="text-xl font-bold text-gray-800">RPGBytes</span>
+>>>>>>> REPLACE
+```
+
+
+2. Update hero section content:
+
+```diff
+<<<<<<< SEARCH
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Code, Create, Chronicle</h1>
+                <p class="text-lg text-gray-700 mb-6">A pastel-hued space for coding tutorials, technical blogging, and sharing snippets with the world.</p>
+=======
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">RPGBytes Chronicles</h1>
+                <p class="text-lg text-gray-700 mb-6">Where coding meets creativity - tutorials, game dev insights, and epic code drops from the RPGBytes universe.</p>
+>>>>>>> REPLACE
+
+
+```
+```diff
+<<<<<<< SEARCH
+                <img src="https://placehold.co/600x400" alt="Digital workspace illustration showing a laptop with code editor, notebook with pastel markers, and a cup of coffee on a wooden desk with soft lighting" class="rounded-lg shadow-xl" />
+=======
+                <img src="https://placehold.co/600x400?text=RPGBytes" alt="RPGBytes digital workspace - gaming laptop showing code next to RPG character sprites and colorful game assets" class="rounded-lg shadow-xl" />
+>>>>>>> REPLACE
+```
+
+
+3. Update blog author images:
+
+```diff
+<<<<<<< SEARCH
+                    <img src="https://placehold.co/40x40" alt="Author avatar - cartoon illustration of a person with glasses and curly hair" class="rounded-full mr-3" />
+=======
+                    <img src="https://placehold.co/40x40?text=Dev" alt="RPGBytes developer avatar - pixel art RPG character portrait" class="rounded-full mr-3" />
+>>>>>>> REPLACE
+
+
+```
+4. Update blog post images:
+
+```diff
+<<<<<<< SEARCH
+                <img src="https://placehold.co/600x400" alt="Abstract pastel colored digital art representing coding concepts" class="w-full h-48 object-cover rounded mb-4" />
+=======
+                <img src="https://placehold.co/600x400?text=RPG+Code" alt="RPGBytes tutorial screenshot showing game code with RPG themed syntax highlighting" class="w-full h-48 object-cover rounded mb-4" />
+>>>>>>> REPLACE
+
+
+```
+5. Update profile/about section:
+
+```diff
+<<<<<<< SEARCH
+            <img src="https://placehold.co/200x200" alt="Profile picture - illustration of a smiling developer at their desk with pastel colored background" class="rounded-full mx-auto mb-6 w-32 h-32 object-cover" />
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
+            <p class="text-lg text-gray-600 mb-6">I'm a developer and educator who loves sharing knowledge through tutorials, blogging about my coding journey, and creating helpful code snippets for the community.</p>
+=======
+            <img src="https://placehold.co/200x200?text=RPGBytes" alt="RPGBytes mascot - friendly pixel art wizard character holding a laptop" class="rounded-full mx-auto mb-6 w-32 h-32 object-cover" />
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">About RPGBytes</h2>
+            <p class="text-lg text-gray-600 mb-6">We blend game development passion with practical coding education. Join our journey through RPG-inspired tutorials, dev logs, and creative code adventures.</p>
+>>>>>>> REPLACE
+```
+
+
+6. Update footer:
+
+```diff
+<<<<<<< SEARCH
+        <p class="text-gray-700 mb-4">© 2023 Pastel Codepen. All rights reserved.</p>
+=======
+        <p class="text-gray-700 mb-4">© 2023 RPGBytes. All rights reserved. May your code compile and your adventures never end.</p>
+>>>>>>> REPLACE
+
+
+```
+Would you like me to make any other specific image/content changes to further customize it for RPGBytes? I can provide more SEARCH/REPLACE blocks focused on particular sections.Here is the updated HTML content after applying above edits:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPGBytes | Code Chronicles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --pastel-mint: #b5ead7;
+            --pastel-lavender: #e2d0f3;
+            --pastel-peach: #ffdac1;
+            --pastel-blue: #c7ceea;
+            --pastel-yellow: #fff2cc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-lavender));
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-card {
+            background-color: var(--pastel-peach);
+        }
+        
+        .tutorial-card {
+            background-color: var(--pastel-blue);
+        }
+        
+        .code-card {
+            background-color: var(--pastel-mint);
+        }
+        
+        .journal-card {
+            background-color: var(--pastel-yellow);
+        }
+        
+        .active-tab {
+            border-bottom: 3px solid var(--pastel-lavender);
+        }
+        
+        .code-block {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                width: 100% !important;
+                text-align: center;
+            }
+            
+            .hero-image {
+                width: 100% !important;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg py-4 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://placehold.co/40x40?text=RPGBytes" alt="RPGBytes Logo - pixel art RPG sword and keyboard icon in pastel colors" class="rounded-full" />
+                <span class="text-xl font-bold text-gray-800">RPGBytes</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#blog" class="text-gray-700 hover:text-gray-900 transition">Blog</a>
+                <a href="#tutorials" class="text-gray-700 hover:text-gray-900 transition">Tutorials</a>
+                <a href="#code" class="text-gray-700 hover:text-gray-900 transition">Code</a>
+                <a href="#about" class="text-gray-700 hover:text-gray-900 transition">About</a>
+            </div>
+            <button class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-6 gradient-bg">
+        <div class="max-w-6xl mx-auto hero-content flex flex-wrap">
+            <div class="hero-text w-1/2 mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">RPGBytes Chronicles</h1>
+                <p class="text-lg text-gray-700 mb-6">Where coding meets creativity - tutorials, game dev insights, and epic code drops from the RPGBytes universe.</p>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-gray-800 px-6 py-2 rounded-full shadow hover:shadow-md transition">Get Started</button>
+                    <button class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-gray-800 transition">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image w-1/2">
+                <img src="https://placehold.co/600x400?text=RPGBytes" alt="RPGBytes digital workspace - gaming laptop showing code next to RPG character sprites and colorful game assets" class="rounded-lg shadow-xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <main class="max-w-6xl mx-auto py-12 px-6">
+        <!-- Tabs Navigation -->
+        <div class="flex border-b mb-8 overflow-x-auto">
+            <button id="blog-tab" class="px-4 py-2 mr-2 font-medium text-gray-700 active-tab">Blog/Journal</button>
+            <button id="tutorials-tab" class="px-4 py-2 mr-2 font-medium text-gray-700">Tutorials</button>
+            <button id="code-tab" class="px-4 py-2 font-medium text-gray-700">Code Drops</button>
+        </div>
+
+        <!-- Blog Section -->
+        <section id="blog-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Blog Card 1 -->
+            <div class="card blog-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/40x40?text=Dev" alt="RPGBytes developer avatar - pixel art RPG character portrait" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Sarah K.</h3>
+                        <p class="text-sm text-gray-600">2 days ago</p>
+                    </div>
+                </div>
+                <img src="https://placehold.co/600x400?text=RPG+Code" alt="RPGBytes tutorial screenshot showing game code with RPG themed syntax highlighting" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold mb-2">My Journey Learning React</h2>
+                <p class="text-gray-700 mb-4">How I went from beginner to building complex applications in just 3 months...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#react</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+
+            <!-- Journal Card -->
+            <div class="card journal-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/40x40" alt="Author avatar - illustration of a person with glasses in a purple sweater" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Alex W.</h3>
+                        <p class="text-sm text-gray-600">1 week ago</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold mb-2">Imposter Syndrome in Tech</h2>
+                <p class="text-gray-700 mb-4">Dealing with feelings of inadequacy while transitioning careers into software development...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#career</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="card blog-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://placehold.co/40x40" alt="Author avatar - digital painting of a person smiling with blue hair" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Jamie L.</h3>
+                        <p class="text-sm text-gray-600">3 weeks ago</p>
+                    </div>
+                </div>
+                <img src="https://placehold.co/600x300" alt="Workspace setup with dual monitors showing code and pastel colored sticky notes on the wall" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold mb-2">Optimizing Your Dev Setup</h2>
+                <p class="text-gray-700 mb-4">Essential tools and configurations for maximum productivity...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#productivity</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorials Section (Hidden by default) -->
+        <section id="tutorials-section" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tutorial Card 1 -->
+            <div class="card tutorial-card rounded-lg p-6">
+                <div class="flex items-start mb-4">
+                    <div class="bg-white p-2 rounded-lg mr-4">
+                        <img src="https://placehold.co/60x60" alt="JavaScript logo with pastel colors" />
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">JavaScript Array Methods</h2>
+                        <p class="text-gray-700">Master map, filter, and reduce with practical examples</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 bg-white rounded-full mr-2">#beginner</span>
+                    <span class="text-sm px-2 py-1 bg-white rounded-full">#javascript</span>
+                </div>
+                <a href="#" class="inline-block px-4 py-2 bg-white rounded-full text-gray-800 hover:shadow transition">Start Tutorial</a>
+            </div>
+
+            <!-- Tutorial Card 2 -->
+            <div class="card tutorial-card rounded-lg p-6">
+                <div class="flex items-start mb-4">
+                    <div class="bg-white p-2 rounded-lg mr-4">
+                        <img src="https://placehold.co/60x60" alt="CSS logo with soft pink and blue gradient" />
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">CSS Grid Layout</h2>
+                        <p class="text-gray-700">Create responsive layouts without media queries</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 bg-white rounded-full mr-2">#intermediate</span>
+                    <span class="text-sm px-2 py-1 bg-white rounded-full">#css</span>
+                </div>
+                <a href="#" class="inline-block px-4 py-2 bg-white rounded-full text-gray-800 hover:shadow transition">Start Tutorial</a>
+            </div>
+        </section>
+
+        <!-- Code Drops Section (Hidden by default) -->
+        <section id="code-section" class="hidden">
+            <div class="card code-card rounded-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Quick Sort Algorithm</h2>
+                    <div class="flex">
+                        <button class="mr-2 text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                                <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-block mb-4">
+                    <pre><code class="language-javascript">function quickSort(arr) {
+    if (arr.length <= 1) return arr;
+    
+    const pivot = arr[0];
+    const left = [];
+    const right = [];
+    
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+    }
+    
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));</code></pre>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/30x30" alt="Author avatar - simple line drawing of a face" class="rounded-full mr-2" />
+                    <span class="text-sm font-medium">Shared by @devuser</span>
+                </div>
+            </div>
+
+            <div class="card code-card rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Debounce Function</h2>
+                    <div class="flex">
+                        <button class="mr-2 text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                                <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-block mb-4">
+                    <pre><code class="language-javascript">function debounce(func, delay) {
+    let timeoutId;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+// Usage:
+window.addEventListener('resize', debounce(() => {
+    console.log('Window resized');
+}, 300));</code></pre>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/30x30" alt="Author avatar - abstract colored circle with initials" class="rounded-full mr-2" />
+                    <span class="text-sm font-medium">Shared by @codehelper</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="bg-white py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <img src="https://placehold.co/200x200?text=RPGBytes" alt="RPGBytes mascot - friendly pixel art wizard character holding a laptop" class="rounded-full mx-auto mb-6 w-32 h-32 object-cover" />
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">About RPGBytes</h2>
+            <p class="text-lg text-gray-600 mb-6">We blend game development passion with practical coding education. Join our journey through RPG-inspired tutorials, dev logs, and creative code adventures.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg py-8 px-6 text-center">
+        <p class="text-gray-700 mb-4">© 2023 RPGBytes. All rights reserved. May your code compile and your adventures never end.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="text-gray-700 hover:text-gray-900">Privacy Policy</a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">Terms of Service</a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = {
+                'blog-tab': 'blog-section',
+                'tutorials-tab': 'tutorials-section',
+                'code-tab': 'code-section'
+            };
+            
+            // Set initial active tab
+            let activeTab = 'blog-tab';
+            
+            // Function to switch between tabs
+            function switchTab(tabId) {
+                // Remove active class from all tabs
+                document.querySelectorAll('[id$="-tab"]').forEach(tab => {
+                    tab.classList.remove('active-tab');
+                });
+                
+                // Hide all sections
+                Object.values(tabs).forEach(sectionId => {
+                    document.getElementById(sectionId).classList.add('hidden');
+                });
+                
+                // Add active class to selected tab and show its section
+                document.getElementById(tabId).classList.add('active-tab');
+                document.getElementById(tabs[tabId]).classList.remove('hidden');
+                
+                // Update active tab
+                activeTab = tabId;
+            }
+            
+            // Add click event listeners to tabs
+            Object.keys(tabs).forEach(tabId => {
+                document.getElementById(tabId).addEventListener('click', () => {
+                    switchTab(tabId);
+                });
+            });
+            
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'hidden absolute top-16 left-0 right-0 bg-white shadow-md py-4 px-6 gradient-bg z-10';
+            mobileMenu.innerHTML = `
+                <a href="#blog" class="block py-2 text-gray-700 hover:text-gray-900">Blog</a>
+                <a href="#tutorials" class="block py-2 text-gray-700 hover:text-gray-900">Tutorials</a>
+                <a href="#code" class="block py-2 text-gray-700 hover:text-gray-900">Code</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-gray-900">About</a>
+            `;
+            document.body.appendChild(mobileMenu);
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+            
+            // Syntax highlighting function
+            function highlightCodeBlocks() {
+                const codeBlocks = document.querySelectorAll('pre code');
+                codeBlocks.forEach(block => {
+                    const text = block.textContent;
+                    // Simple syntax highlighting (would be better with a library)
+                    const highlighted = text
+                        .replace(/(\/\/.*|\/\*[\s\S]*?\*\/)/g, '<span class="text-gray-500">$1</span>') // Comments
+                        .replace(/(function|return|const|let|var|if|else|for|while|do|switch|case|break|default)\b/g, '<span class="text-blue-600">$1</span>') // Keywords
+                        .replace(/(".*?"|'.*?')/g, '<span class="text-green-600">$1</span>') // Strings
+                        .replace(/([0-9]+)/g, '<span class="text-purple-600">$1</span>'); // Numbers
+                    
+                    block.innerHTML = highlighted;
+                });
+            }
+            
+            // Run syntax highlighting
+            highlightCodeBlocks();
+        });
+    </script>
+</body>
+</html>
+```
+
+🎨 **Generating images based on descriptions...**
+
+✅ **Images generated successfully! Here's your updated content:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPGBytes | Code Chronicles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --pastel-mint: #b5ead7;
+            --pastel-lavender: #e2d0f3;
+            --pastel-peach: #ffdac1;
+            --pastel-blue: #c7ceea;
+            --pastel-yellow: #fff2cc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--pastel-mint), var(--pastel-lavender));
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .blog-card {
+            background-color: var(--pastel-peach);
+        }
+        
+        .tutorial-card {
+            background-color: var(--pastel-blue);
+        }
+        
+        .code-card {
+            background-color: var(--pastel-mint);
+        }
+        
+        .journal-card {
+            background-color: var(--pastel-yellow);
+        }
+        
+        .active-tab {
+            border-bottom: 3px solid var(--pastel-lavender);
+        }
+        
+        .code-block {
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text {
+                width: 100% !important;
+                text-align: center;
+            }
+            
+            .hero-image {
+                width: 100% !important;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg py-4 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0109ae33-4327-4bf0-85cd-4bbd6448a442.png" alt="RPGBytes Logo - pixel art RPG sword and keyboard icon in pastel colors" class="rounded-full" />
+                <span class="text-xl font-bold text-gray-800">RPGBytes</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#blog" class="text-gray-700 hover:text-gray-900 transition">Blog</a>
+                <a href="#tutorials" class="text-gray-700 hover:text-gray-900 transition">Tutorials</a>
+                <a href="#code" class="text-gray-700 hover:text-gray-900 transition">Code</a>
+                <a href="#about" class="text-gray-700 hover:text-gray-900 transition">About</a>
+            </div>
+            <button class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-6 gradient-bg">
+        <div class="max-w-6xl mx-auto hero-content flex flex-wrap">
+            <div class="hero-text w-1/2 mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">RPGBytes Chronicles</h1>
+                <p class="text-lg text-gray-700 mb-6">Where coding meets creativity - tutorials, game dev insights, and epic code drops from the RPGBytes universe.</p>
+                <div class="flex space-x-4">
+                    <button class="bg-white text-gray-800 px-6 py-2 rounded-full shadow hover:shadow-md transition">Get Started</button>
+                    <button class="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-gray-800 transition">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image w-1/2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/df61bcbc-719b-4325-9e90-a3b207f58686.png" alt="RPGBytes digital workspace - gaming laptop showing code next to RPG character sprites and colorful game assets" class="rounded-lg shadow-xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <main class="max-w-6xl mx-auto py-12 px-6">
+        <!-- Tabs Navigation -->
+        <div class="flex border-b mb-8 overflow-x-auto">
+            <button id="blog-tab" class="px-4 py-2 mr-2 font-medium text-gray-700 active-tab">Blog/Journal</button>
+            <button id="tutorials-tab" class="px-4 py-2 mr-2 font-medium text-gray-700">Tutorials</button>
+            <button id="code-tab" class="px-4 py-2 font-medium text-gray-700">Code Drops</button>
+        </div>
+
+        <!-- Blog Section -->
+        <section id="blog-section" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Blog Card 1 -->
+            <div class="card blog-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/435dc3cc-bac9-4fb6-9e28-13b5e95c6351.png" alt="RPGBytes developer avatar - pixel art RPG character portrait" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Sarah K.</h3>
+                        <p class="text-sm text-gray-600">2 days ago</p>
+                    </div>
+                </div>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d39eb082-5357-4def-80cb-7bbddbc87281.png" alt="RPGBytes tutorial screenshot showing game code with RPG themed syntax highlighting" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold mb-2">My Journey Learning React</h2>
+                <p class="text-gray-700 mb-4">How I went from beginner to building complex applications in just 3 months...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#react</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+
+            <!-- Journal Card -->
+            <div class="card journal-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a63d4832-d630-474d-9fb4-2895adffb522.png" alt="Author avatar - illustration of a person with glasses in a purple sweater" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Alex W.</h3>
+                        <p class="text-sm text-gray-600">1 week ago</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold mb-2">Imposter Syndrome in Tech</h2>
+                <p class="text-gray-700 mb-4">Dealing with feelings of inadequacy while transitioning careers into software development...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#career</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="card blog-card rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/03c1e9d9-24f5-4d89-8575-9bc6d23268fe.png" alt="Author avatar - digital painting of a person smiling with blue hair" class="rounded-full mr-3" />
+                    <div>
+                        <h3 class="font-semibold">Jamie L.</h3>
+                        <p class="text-sm text-gray-600">3 weeks ago</p>
+                    </div>
+                </div>
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8fda11ac-d6b4-4742-b1f7-61024ca62fdc.png" alt="Workspace setup with dual monitors showing code and pastel colored sticky notes on the wall" class="w-full h-48 object-cover rounded mb-4" />
+                <h2 class="text-xl font-bold mb-2">Optimizing Your Dev Setup</h2>
+                <p class="text-gray-700 mb-4">Essential tools and configurations for maximum productivity...</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm px-3 py-1 bg-white rounded-full">#productivity</span>
+                    <button class="text-gray-700 hover:text-gray-900">Read More →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorials Section (Hidden by default) -->
+        <section id="tutorials-section" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tutorial Card 1 -->
+            <div class="card tutorial-card rounded-lg p-6">
+                <div class="flex items-start mb-4">
+                    <div class="bg-white p-2 rounded-lg mr-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a6506afa-602c-476a-803f-7807043afae3.png" alt="JavaScript logo with pastel colors" />
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">JavaScript Array Methods</h2>
+                        <p class="text-gray-700">Master map, filter, and reduce with practical examples</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 bg-white rounded-full mr-2">#beginner</span>
+                    <span class="text-sm px-2 py-1 bg-white rounded-full">#javascript</span>
+                </div>
+                <a href="#" class="inline-block px-4 py-2 bg-white rounded-full text-gray-800 hover:shadow transition">Start Tutorial</a>
+            </div>
+
+            <!-- Tutorial Card 2 -->
+            <div class="card tutorial-card rounded-lg p-6">
+                <div class="flex items-start mb-4">
+                    <div class="bg-white p-2 rounded-lg mr-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1461a8d3-652c-4869-b2da-fc460bacaf35.png" alt="CSS logo with soft pink and blue gradient" />
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">CSS Grid Layout</h2>
+                        <p class="text-gray-700">Create responsive layouts without media queries</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span class="text-sm px-2 py-1 bg-white rounded-full mr-2">#intermediate</span>
+                    <span class="text-sm px-2 py-1 bg-white rounded-full">#css</span>
+                </div>
+                <a href="#" class="inline-block px-4 py-2 bg-white rounded-full text-gray-800 hover:shadow transition">Start Tutorial</a>
+            </div>
+        </section>
+
+        <!-- Code Drops Section (Hidden by default) -->
+        <section id="code-section" class="hidden">
+            <div class="card code-card rounded-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Quick Sort Algorithm</h2>
+                    <div class="flex">
+                        <button class="mr-2 text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                                <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-block mb-4">
+                    <pre><code class="language-javascript">function quickSort(arr) {
+    if (arr.length <= 1) return arr;
+    
+    const pivot = arr[0];
+    const left = [];
+    const right = [];
+    
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) left.push(arr[i]);
+        else right.push(arr[i]);
+    }
+    
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+console.log(quickSort([3, 6, 8, 10, 1, 2, 1]));</code></pre>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8bef93ab-470c-49c2-9274-119b2e7626a6.png" alt="Author avatar - simple line drawing of a face" class="rounded-full mr-2" />
+                    <span class="text-sm font-medium">Shared by @devuser</span>
+                </div>
+            </div>
+
+            <div class="card code-card rounded-lg p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold">Debounce Function</h2>
+                    <div class="flex">
+                        <button class="mr-2 text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+                                <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+                            </svg>
+                        </button>
+                        <button class="text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-block mb-4">
+                    <pre><code class="language-javascript">function debounce(func, delay) {
+    let timeoutId;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+// Usage:
+window.addEventListener('resize', debounce(() => {
+    console.log('Window resized');
+}, 300));</code></pre>
+                </div>
+                <div class="flex items-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a761a9c3-533c-43cc-bf03-c0e5855d9ce7.png" alt="Author avatar - abstract colored circle with initials" class="rounded-full mr-2" />
+                    <span class="text-sm font-medium">Shared by @codehelper</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="bg-white py-16 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/422ccb1d-a762-493f-b8b5-53a9bd42038f.png" alt="RPGBytes mascot - friendly pixel art wizard character holding a laptop" class="rounded-full mx-auto mb-6 w-32 h-32 object-cover" />
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">About RPGBytes</h2>
+            <p class="text-lg text-gray-600 mb-6">We blend game development passion with practical coding education. Join our journey through RPG-inspired tutorials, dev logs, and creative code adventures.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-700 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg py-8 px-6 text-center">
+        <p class="text-gray-700 mb-4">© 2023 RPGBytes. All rights reserved. May your code compile and your adventures never end.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="text-gray-700 hover:text-gray-900">Privacy Policy</a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">Terms of Service</a>
+            <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = {
+                'blog-tab': 'blog-section',
+                'tutorials-tab': 'tutorials-section',
+                'code-tab': 'code-section'
+            };
+            
+            // Set initial active tab
+            let activeTab = 'blog-tab';
+            
+            // Function to switch between tabs
+            function switchTab(tabId) {
+                // Remove active class from all tabs
+                document.querySelectorAll('[id$="-tab"]').forEach(tab => {
+                    tab.classList.remove('active-tab');
+                });
+                
+                // Hide all sections
+                Object.values(tabs).forEach(sectionId => {
+                    document.getElementById(sectionId).classList.add('hidden');
+                });
+                
+                // Add active class to selected tab and show its section
+                document.getElementById(tabId).classList.add('active-tab');
+                document.getElementById(tabs[tabId]).classList.remove('hidden');
+                
+                // Update active tab
+                activeTab = tabId;
+            }
+            
+            // Add click event listeners to tabs
+            Object.keys(tabs).forEach(tabId => {
+                document.getElementById(tabId).addEventListener('click', () => {
+                    switchTab(tabId);
+                });
+            });
+            
+            // Mobile menu toggle functionality
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = 'hidden absolute top-16 left-0 right-0 bg-white shadow-md py-4 px-6 gradient-bg z-10';
+            mobileMenu.innerHTML = `
+                <a href="#blog" class="block py-2 text-gray-700 hover:text-gray-900">Blog</a>
+                <a href="#tutorials" class="block py-2 text-gray-700 hover:text-gray-900">Tutorials</a>
+                <a href="#code" class="block py-2 text-gray-700 hover:text-gray-900">Code</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-gray-900">About</a>
+            `;
+            document.body.appendChild(mobileMenu);
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+            
+            // Syntax highlighting function
+            function highlightCodeBlocks() {
+                const codeBlocks = document.querySelectorAll('pre code');
+                codeBlocks.forEach(block => {
+                    const text = block.textContent;
+                    // Simple syntax highlighting (would be better with a library)
+                    const highlighted = text
+                        .replace(/(\/\/.*|\/\*[\s\S]*?\*\/)/g, '<span class="text-gray-500">$1</span>') // Comments
+                        .replace(/(function|return|const|let|var|if|else|for|while|do|switch|case|break|default)\b/g, '<span class="text-blue-600">$1</span>') // Keywords
+                        .replace(/(".*?"|'.*?')/g, '<span class="text-green-600">$1</span>') // Strings
+                        .replace(/([0-9]+)/g, '<span class="text-purple-600">$1</span>'); // Numbers
+                    
+                    block.innerHTML = highlighted;
+                });
+            }
+            
+            // Run syntax highlighting
+            highlightCodeBlocks();
+        });
+    </script>
+</body>
+</html>
+```
