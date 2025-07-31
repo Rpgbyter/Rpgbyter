@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rpgbyter's ByteHybrid</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        :root {
+            --pixel-font: 'Press Start 2P', cursive;
+            --bg-color: #1a1a2e;
+            --text-color: #e0e0e0;
+            --accent-color: #e94560;
+            --secondary-accent: #0f3460;
+            --border-color: #533483;
+            --shadow-color: #000000;
+            --card-bg: rgba(26, 26, 46, 0.7);
+            --card-border: #e94560;
+        }
+        body {
+            margin: 0;
+            font-family: var(--pixel-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--secondary-accent);
+            border: 2px solid var(--border-color);
+            box-shadow: 8px 8px 0px var(--shadow-color);
+            width: 100%;
+            max-width: 960px;
+            box-sizing: border-box;
+        }
+        .ascii-logo {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 1.2em;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 0px var(--shadow-color);
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: var(--accent-color);
+            text-shadow: 4px 4px 0px var(--shadow-color);
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        nav {
+            margin: 1.5rem 0 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: var(--accent-color);
+            background: var(--secondary-accent);
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            box-shadow: 0 2px 8px #0004;
+        }
+        nav a.active, nav a:hover {
+            background: var(--accent-color);
+            color: var(--secondary-accent);
+            border: 2px solid #fff;
+        }
+        main {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1rem 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .section-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 1em;
+            color: var(--accent-color);
+            background: rgba(0,0,0,0.15);
+            border: 1px dashed var(--border-color);
+            margin: 20px auto 10px auto;
+            padding: 10px;
+            text-align: center;
+            overflow-x: auto;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 0;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+            box-shadow: 4px 4px 0px var(--shadow-color);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-size: 1.2em;
+        }
+        .card p {
+            margin-bottom: 20px;
+        }
+        .card-footer {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        .about-me-section {
+            text-align: center;
+        }
+        .about-me-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.7em;
+            color: var(--text-color);
+            width: 100%;
+            max-width: 960px;
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .ascii-logo { font-size: 0.9em; }
+            .ascii-art { font-size: 0.75em; }
+            .card-grid { grid-template-columns: 1fr; }
+            section { padding: 20px; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5em; }
+            .ascii-logo { font-size: 0.7em; }
+            .ascii-art { font-size: 0.6em; }
+            section { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <pre class="ascii-logo">
+  _  _ ____ ____ ____ _  _ ____ ____ _  _ _    
+  |\/| |__| |__/ |___ |\ | | __ |__| |\ | |    
+  |  | |  | |  \ |___ | \| |__] |  | | \| |___ 
+            </pre>
+            <h1>Rpgbyter's ByteHybrid</h1>
+            <p class="tagline">Navigating the digital frontier, one byte at a time.</p>
+        </header>
+        <nav>
+            <a href="#byteblogging" class="active">Byteblogging</a>
+            <a href="#bytecoding">Bytecoding</a>
+            <a href="#codebytes">CodeBytes</a>
+            <a href="#about-me">About Me</a>
+        </nav>
+        <main>
+            <section id="byteblogging">
+                <div class="section-header">
+                    <div class="section-title">Byteblogging</div>
+                    <pre class="ascii-art">
+  /\_/\
+ ( o.o )
+  > ^ <
+ /  |  \
+/___|___\
+|_______|
+                    </pre>
+                    <p class="section-subtitle">
+                        Social commentary on the tech world - unfiltered bytes of truth
+                    </p>
+                </div>
+                <div class="card-grid">
+                    <!-- First blog post, collapsible -->
+                    <div class="card blog-post">
+                      <h3>So, Are You Over 18? Prove It. Again. And Again.</h3>
+                      <div class="card-footer">2024-07-30</div>
+                      <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                      <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+</div>
+<!-- ...existing code... -->
+<script>
+function togglePostContent(btn) {
+  const content = btn.nextElementSibling;
+  if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+    content.style.maxHeight = '0px';
+    content.style.padding = '';
+    btn.textContent = 'Read More';
+  } else {
+    content.style.maxHeight = content.scrollHeight + 40 + 'px';
+    content.style.padding = '16px 0';
+    btn.textContent = 'Read Less';
+  }
+}
+</script>
+                        <h4>Introduction</h4>
+                        <p>A satirical look at the UK's age verification law and its impact on adults and the tech scene.</p>
+                        <h4>The Law and Its Execution</h4>
+                        <p>The stated goal, of course, was to protect the children. A noble, unassailable aim. We all want to keep the internet's dark corners away from innocent eyes. But the execution? It's like trying to childproof a battleship with a single roll of bubble wrap. The kids, as they say, are alright. They're armed with VPNs, their older sibling's ID, and a level of digital savvy that would make a GCHQ agent blush. They bypassed these digital bouncers before the virtual velvet rope was even in place.</p>
+                        <h4>The Adult Experience</h4>
+                        <p>So who is left to enjoy this brave new world of digital safety? Us. The actual, bona fide adults. The ones who just want to read a controversial article, browse a forum with some spicy language, or, heaven forbid, look at a piece of art that might contain a nipple. We are the ones now stuck in an endless loop of uploading our driving licenses to a company we've never heard of, with a privacy policy longer than a Tolstoy novel and twice as dense.</p>
+                        <h4>Data Privacy Concerns</h4>
+                        <p>My personal data has been shared with so many third-party age verification services that I'm half expecting to get a Christmas card from their server farms. I've handed over more personal information to buy a bottle of virtual gin in a video game than I did to get my last mortgage. And for what? A system that can be fooled by a picture of a potato with googly eyes glued on it.</p>
+                        <h4>Impact on Tech and Innovation</h4>
+                        <p>And the impact on the tech scene? Don't get me started. The UK, once a hub of innovation, is now the digital equivalent of a village with a very aggressive neighbourhood watch. The most exciting new AI tools and APIs are simply blocking us. It's easier for them to geofence the entire country than to navigate the labyrinthine and frankly bizarre requirements of our new law. So while the rest of the world is playing with the future, we're stuck here, trying to remember which blurry photo of our passport we used to sign up for a meme website.</p>
+                        <h4>Conclusion</h4>
+                        <p>This isn't safety. It's security theatre. It's a digital version of putting a "Beware of the Dog" sign on a house with a hamster. It hasn't made the internet safer for children, but it has made it infinitely more annoying for adults. It hasn't stopped the bad guys, but it has stopped a lot of good, innovative, and interesting things from reaching our shores.</p>
+                        <p>So, here's to the age verification law. A solution that doesn't solve the problem, but creates a whole host of new ones. I'd raise a glass to it, but I'm not sure I can be bothered to prove I'm old enough to buy one.</p>
+                        <p><em>RpgByter</em></p>
+                      </div>
+                    </div>
+                    <!-- Example posts -->
+                    <div class="card">
+                        <h3>AI Ethics in 2024</h3>
+                        <div class="card-footer">Last updated: 05/15/2024</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>Exploring the moral dilemmas of generative AI and where we should draw the line.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>The Great Framework War</h3>
+                        <div class="card-footer">Last updated: 04/28/2024</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>React vs Vue vs Svelte - does it really matter which you choose?</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Tech Layoffs & Mental Health</h3>
+                        <div class="card-footer">Last updated: 03/10/2024</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>A personal perspective on navigating uncertainty in the tech industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="bytecoding">
+                <div class="section-header">
+                    <div class="section-title">Bytecoding Tutorials</div>
+                    <pre class="ascii-art">
+  +------------------+
+  |  CODE  IS  LIFE  |
+  |  _ _ _ _ _ _ _   |
+  | | | | | | | | |  |
+  | |_|_|_|_|_|_|_|  |
+  |                  |
+  |  AI & LEARNING   |
+  +------------------+
+                    </pre>
+                    <p class="section-subtitle">
+                        Learn to code with AI - tutorials and guides for modern developers
+                    </p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Pair Programming with Copilot</h3>
+                        <div class="card-footer">Coming soon</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>How to effectively use GitHub Copilot without becoming dependent.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Building AutoGPT Agents</h3>
+                        <div class="card-footer">Coming soon</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>Practical guide to creating autonomous AI agents that work for you.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Next.js & AI API Integration</h3>
+                        <div class="card-footer">Coming soon</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>Building a full-stack app with Next.js and OpenAI API.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="codebytes">
+                <div class="section-header">
+                    <div class="section-title">CodeBytes</div>
+                    <pre class="ascii-art">
+  .--.  .--.
+ /    \/    \
+|  ()  ()  |
+ \  __  __ /
+  '--''--'
+  /\/\/\/\
+ /  \/  \/
+|  ()  ()  |
+ \  __  __ /
+  '--''--'
+                    </pre>
+                    <p class="section-subtitle">
+                        Free and open source code snippets, tools, and libraries
+                    </p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Pixel Art Generator</h3>
+                        <div class="card-footer">GitHub: rpgbytes/pixel-art-gen</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>JavaScript tool for converting images to ASCII and pixel art.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>CLI Task Manager</h3>
+                        <div class="card-footer">GitHub: rpgbytes/cli-task-manager</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>Node.js command line productivity tool with AI integration.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>ASCII UI Components</h3>
+                        <div class="card-footer">GitHub: rpgbytes/ascii-ui</div>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>React components for building terminal-style interfaces.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="about-me" class="about-me-section">
+                <div class="section-header">
+                    <div class="section-title">About Me</div>
+                    <pre class="ascii-art">
+   ____  ____  ____  ____  ____  ____  ____  ____
+  ||R |||P |||G |||B |||y |||t |||e |||r ||
+  ||__|||__|||__|||__|||__|||__|||__|||__||
+  |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+                    </pre>
+                    <p class="section-subtitle">
+                        My journey through the tech industry and lessons learned
+                    </p>
+                </div>
+                <img src="./Copi/rpgbyter_logo_7.png" alt="Rpgbyter Logo">
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>From Zero to Developer</h3>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>How I taught myself to code and broke into the tech industry.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Burnout & Recovery</h3>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>My experience with developer burnout and how I found balance.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Why Open Source?</h3>
+                        <button class="read-more-btn" onclick="togglePostContent(this)">Read More</button>
+                        <div class="post-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(.4,0,.2,1),padding 0.4s; text-align:left;">
+                            <p>The philosophy behind sharing knowledge and code freely.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2025 Rpgbyter. All rights reserved. Powered by Bytes and Pixels.</p>
+        </footer>
+    </div>
+</body>
+</html>
